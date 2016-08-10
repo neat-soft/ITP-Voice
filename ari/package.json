@@ -1,0 +1,31 @@
+{
+  "name": "ari",
+  "version": "0.0.0",
+  "description": "ITP Voice Platform (ARI)",
+  "main": "daemon.js",
+  "dependencies": {
+    "ari-client": "^0.2.1",
+    "mongodb": "~2.0.40",
+    "mongoose": "~4.1.1",
+    "npm-install-missing": "^0.1.4",
+    "q": "~1.4.1",
+    "request": "^2.60.0",
+    "restler": "~3.4.0",
+    "round-robin": "^1.0.0",
+    "rr": "~0.1.0",
+    "uuid": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ITPCorp/ITP-Voice-Platform.git"
+  },
+  "author": "Harraz Abdelghafour",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/ITPCorp/ITP-Voice-Platform/issues"
+  }
+}

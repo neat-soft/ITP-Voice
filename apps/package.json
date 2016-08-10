@@ -1,0 +1,54 @@
+{
+  "name": "apps",
+  "version": "0.0.0",
+  "description": "ITP Voice Platform (APPS)",
+  "main": "app.js",
+  "dependencies": {
+    "assertion-error": "^1.0.2",
+    "body-parser": "^1.13.3",
+    "connect-flash": "~0.1.1",
+    "cookie-parser": "^1.3.5",
+    "debug": "^2.2.0",
+    "ejs-locals": "~1.0.2",
+    "express": "^4.14.0",
+    "express-jwt": "~3.3.0",
+    "formidable": "^1.0.17",
+    "gridfs-stream": "^1.1.1",
+    "http": "~0.0.0",
+    "jsonwebtoken": "^5.4.1",
+    "logger": "0.0.1",
+    "mongodb": "~2.0.40",
+    "mongoose": "^4.1.12",
+    "morgan": "^1.6.1",
+    "nan": "~2.2.0",
+    "passport": "^0.3.2",
+    "passport-local": "~1.0.0",
+    "passport-localapikey": "0.0.3",
+    "q": "^1.4.1",
+    "randomstring": "^1.1.5",
+    "request": "^2.60.0",
+    "rr": "^0.1.0",
+    "short-id": "0.1.0-1",
+    "swagger-ui": "^2.1.4",
+    "underscore": "~1.8.3",
+    "util": "~0.10.3",
+    "uuid": "^2.0.2",
+    "validator": "^5.2.0",
+    "xml2json": "^0.9.0",
+    "sync":"",
+    "async":""
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ITPCorp/ITP-Voice-Platform.git"
+  },
+  "author": "Harraz Abdelghafour",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ITPCorp/ITP-Voice-Platform/issues"
+  }
+}

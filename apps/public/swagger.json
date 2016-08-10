@@ -1,0 +1,4258 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "ITP Voice Platform",
+    "description": "You can try all HTTP operation described in this Swagger spec.\n"
+  },
+  "host": "192.112.255.30:3000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json",
+    "application/xml"
+  ],
+  "paths": {
+    "/accounts/{filter}/api/provision-device": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "add provision device",
+        "description": "Add provision device\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Device body",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Device and Ivr",
+            "schema": {
+              "$ref": "#/definitions/DeviceProvision"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/api/resource/{did}": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "add provision device",
+        "description": "Add provision device\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "did",
+            "description": "number to call",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Device body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminResource"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Device and Ivr",
+            "schema": {
+              "$ref": "#/definitions/DeviceProvision"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "List all accounts",
+        "description": "List all accounts\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Accounts",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Add accounts",
+        "description": "Add accounts\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ID of account",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Added account",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{param}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get account",
+        "description": "Get account\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param",
+            "description": "parameter to found",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Update account",
+        "description": "Update account\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param",
+            "description": "parameter to found",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Elements to update",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated account",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Delete account",
+        "description": "Delete account\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param",
+            "description": "parameter to found",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted account",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/bill-settings?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "BillSettings"
+        ],
+        "summary": "List all billSettings",
+        "description": "List all billSettings\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of billSettings",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BillSettings"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "BillSettings"
+        ],
+        "summary": "Add billSettings",
+        "description": "Add billSettings\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ID of billSettings",
+            "schema": {
+              "$ref": "#/definitions/BillSettings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Added billSettings",
+            "schema": {
+              "$ref": "#/definitions/BillSettings"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/bill-settings/{param}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "BillSettings"
+        ],
+        "summary": "Get billSettings",
+        "description": "Get billSettings\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param",
+            "description": "parameter to found",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "billSettings",
+            "schema": {
+              "$ref": "#/definitions/BillSettings"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "BillSettings"
+        ],
+        "summary": "Update billSettings",
+        "description": "Update billSettings\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param",
+            "description": "parameter to found",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Elements to update",
+            "schema": {
+              "$ref": "#/definitions/BillSettings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated billSettings",
+            "schema": {
+              "$ref": "#/definitions/BillSettings"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "BillSettings"
+        ],
+        "summary": "Delete billSettings",
+        "description": "Delete billSettings\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param",
+            "description": "parameter to found",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted billSettings",
+            "schema": {
+              "$ref": "#/definitions/BillSettings"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/get?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Get"
+        ],
+        "summary": "List all",
+        "description": "List all\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Elements",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Get"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Get"
+        ],
+        "summary": "Add Element",
+        "description": "Add Element\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ID of Element",
+            "schema": {
+              "$ref": "#/definitions/Get"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Added element",
+            "schema": {
+              "$ref": "#/definitions/Get"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/if?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "If"
+        ],
+        "summary": "List all",
+        "description": "List all\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Elements",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/If"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "If"
+        ],
+        "summary": "Add Element",
+        "description": "Add Element\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ID of Element",
+            "schema": {
+              "$ref": "#/definitions/If"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Added element",
+            "schema": {
+              "$ref": "#/definitions/Get"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/if/getFullIf/{Id}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "If"
+        ],
+        "summary": "Get Full Object By id",
+        "description": "Get Full Object By id\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "Id of element",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If",
+            "schema": {
+              "$ref": "#/definitions/If"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/if/{Id}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "If"
+        ],
+        "summary": "Get By id",
+        "description": "Get by id\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "Id of element",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "If",
+            "schema": {
+              "$ref": "#/definitions/If"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "If"
+        ],
+        "summary": "Update By id",
+        "description": "Update by id\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "id of element to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Elements to update",
+            "schema": {
+              "$ref": "#/definitions/If"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated Element",
+            "schema": {
+              "$ref": "#/definitions/Get"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "If"
+        ],
+        "summary": "Delete By id",
+        "description": "Delete by id\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "id of eleme,t to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted element",
+            "schema": {
+              "$ref": "#/definitions/If"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/get/{Id}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Get"
+        ],
+        "summary": "Get By id",
+        "description": "Get by id\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "Id of element",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get",
+            "schema": {
+              "$ref": "#/definitions/Get"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Get"
+        ],
+        "summary": "Update By id",
+        "description": "Update by id\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "id of element to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Elements to update",
+            "schema": {
+              "$ref": "#/definitions/Get"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated Element",
+            "schema": {
+              "$ref": "#/definitions/Get"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Get"
+        ],
+        "summary": "Delete By id",
+        "description": "Delete by id\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "id of eleme,t to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted element",
+            "schema": {
+              "$ref": "#/definitions/Get"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/get/getVariable/{Id}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Get"
+        ],
+        "summary": "Get By id",
+        "description": "Get by id\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "Id of element",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get",
+            "schema": {
+              "$ref": "#/definitions/Get"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/contact?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "List all contact",
+        "description": "List all contact\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of contact",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Contact"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Add contact",
+        "description": "Add contact\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ID of contact",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Added contact",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/contact/{param}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Get contact",
+        "description": "Get contact\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param",
+            "description": "parameter to found",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "contact",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Update contact",
+        "description": "Update contact\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param",
+            "description": "parameter to found",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Elements to update",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated contact",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Delete contact",
+        "description": "Delete contact\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "param",
+            "description": "parameter to found",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted contact",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/device?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "List all devices",
+        "description": "List all devices\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ID of account",
+            "schema": {
+              "$ref": "#/definitions/Child"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of devices",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Device"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/device/add-device?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Add new device",
+        "description": "Add new device\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "device object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Devices",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/device/{idDevice}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Get device By ID",
+        "description": "Get device By ID \n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "idDevice",
+            "description": "ID of the device to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Device",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Update device by ID",
+        "description": "Update device by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "idDevice",
+            "description": "ID of the device to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "updated device",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Device",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Delete Device by ID",
+        "description": "Delete Device by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "idDevice",
+            "description": "ID of the device to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "information about the removed device",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/number/local-number?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Number"
+        ],
+        "summary": "Add local number",
+        "description": "Add local number\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Number object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Number",
+            "schema": {
+              "$ref": "#/definitions/Number"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/number/toll-free?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Number"
+        ],
+        "summary": "Add toll free",
+        "description": "Add toll free\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Number object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Number",
+            "schema": {
+              "$ref": "#/definitions/Number"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/number?apikey={apiKey}": {
+      "delete": {
+        "tags": [
+          "Number"
+        ],
+        "summary": "Delete number by number",
+        "description": "Delete number by number\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Number object (number is required)",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "information about the removed Number",
+            "schema": {
+              "$ref": "#/definitions/Number"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Number"
+        ],
+        "summary": "List all numbers",
+        "description": "List all numbers\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Account ID",
+            "schema": {
+              "$ref": "#/definitions/Child"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of numbers",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Number"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/number/link-number?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Number"
+        ],
+        "summary": "Link number",
+        "description": "Link number\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Number object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of numbers",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Number"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/number/unlink-number?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Number"
+        ],
+        "summary": "Unlink number",
+        "description": "Unlink number\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Number object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of numbers",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Number"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/user?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "List all users",
+        "description": "List all users\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of users",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/user/add-user?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Add new user",
+        "description": "Add new user\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "added user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/user/{userID}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get user by ID",
+        "description": "Get user by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userID",
+            "description": "ID of the user to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "User Types",
+        "description": "Update user by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userID",
+            "description": "ID of the user to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "updated user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "User Types",
+        "description": "Delete user by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userID",
+            "description": "ID of the user to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "removed user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/moh/listAllMohs?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Moh"
+        ],
+        "summary": "List all Moh",
+        "description": "List all Moh\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Moh",
+            "schema": {
+              "$ref": "#/definitions/Moh"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/moh/deleteMohById/{mohID}?apikey={apiKey}": {
+      "delete": {
+        "tags": [
+          "Moh"
+        ],
+        "summary": "Delete Moh",
+        "description": "Delete Moh\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "mohID",
+            "description": "ID of moh to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Removed Moh",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Moh"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/moh/{mohID}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Moh"
+        ],
+        "summary": "Get Moh by ID",
+        "description": "Get Moh by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "mohID",
+            "description": "ID of moh",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Moh",
+            "schema": {
+              "$ref": "#/definitions/Moh"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/moh/add-moh?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Moh"
+        ],
+        "summary": "Add new Mohs",
+        "description": "Add new Moh\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Moh object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Moh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Moh",
+            "schema": {
+              "$ref": "#/definitions/Moh"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/moh/updateMohById/{mohID}?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Moh"
+        ],
+        "summary": "Update Moh",
+        "description": "Update Moh\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "mohID",
+            "description": "ID of moh to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Moh object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Moh"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Moh",
+            "schema": {
+              "$ref": "#/definitions/Moh"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/queue/addQueue?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Queue"
+        ],
+        "summary": "Add new queue",
+        "description": "Add new queue\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Queue object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Queue"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Queue",
+            "schema": {
+              "$ref": "#/definitions/Queue"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/queue?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Queue"
+        ],
+        "summary": "List all queues",
+        "description": "List all queues\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Queues",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Queue"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/queue/{queueID}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Queue"
+        ],
+        "summary": "Get queue by ID",
+        "description": "Get queue by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "queueID",
+            "description": "ID of the queue to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "queue",
+            "schema": {
+              "$ref": "#/definitions/Queue"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Queue"
+        ],
+        "summary": "Update queue by ID",
+        "description": "Update queue by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "queueID",
+            "description": "ID of the queue to Update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Queue object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Queue"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated queue",
+            "schema": {
+              "$ref": "#/definitions/Queue"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Queue"
+        ],
+        "summary": "Delete queue by ID",
+        "description": "Delete queue by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "queueID",
+            "description": "ID of the queue to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted queue",
+            "schema": {
+              "$ref": "#/definitions/Queue"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/agentQueue/listAllAgentQueues?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "AgentQueue"
+        ],
+        "summary": "List all agentqueues",
+        "description": "List all agentqueues\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of AgentQueues",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentQueue"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/agentQueue/addAgentQueue?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "AgentQueue"
+        ],
+        "summary": "Add new agentqueue",
+        "description": "Add new agentqueue\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "AgentQueue object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AgentQueue"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "AgentQueue",
+            "schema": {
+              "$ref": "#/definitions/AgentQueue"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/agentQueue/deleteAgentQueueById/{ID}?apikey={apiKey}": {
+      "delete": {
+        "tags": [
+          "AgentQueue"
+        ],
+        "summary": "Delete AgentQueue by ID",
+        "description": "Delete AgentQueue by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ID",
+            "description": "ID of AgentQueue to remove",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Removed AgentQueues",
+            "schema": {
+              "$ref": "#/definitions/AgentQueue"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/agentQueue/getAgentQueueById/{ID}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "AgentQueue"
+        ],
+        "summary": "Get AgentQueue by ID",
+        "description": "Get AgentQueue by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ID",
+            "description": "ID of AgentQueue",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "AgentQueues",
+            "schema": {
+              "$ref": "#/definitions/AgentQueue"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/agentQueue/getAQByAgentId/{agentID}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "AgentQueue"
+        ],
+        "summary": "Get agentqueues by agent ID",
+        "description": "Get agentqueues by agent ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "agentID",
+            "description": "ID of agent",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of AgentQueues",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentQueue"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/agentQueue/getAQByQueueId/{queueID}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "AgentQueue"
+        ],
+        "summary": "Get agentqueues by queue ID",
+        "description": "Get agentqueues by queue ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "queueID",
+            "description": "ID of queue",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of AgentQueues",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentQueue"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/agentQueue/updateAgentQueueById/{ID}?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "AgentQueue"
+        ],
+        "summary": "Update AgentQueue by ID",
+        "description": "Update AgentQueue by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ID",
+            "description": "ID of AgentQueue to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "AgentQueue object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AgentQueue"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "AgentQueues",
+            "schema": {
+              "$ref": "#/definitions/AgentQueue"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/agentQueue/updateStatusAgent/{agentID}?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "AgentQueue"
+        ],
+        "summary": "Update status of agent",
+        "description": "Update status of agent\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "agentID",
+            "description": "ID of agent",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "New status of the agent",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated AgentQueues",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentQueue"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/menu?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "List all Menus",
+        "description": "List all Menus\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ID of account",
+            "schema": {
+              "$ref": "#/definitions/Child"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Menu",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Menu"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/menu/add-menu?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Add new menu",
+        "description": "Add new menu\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Menu object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Menu",
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/menu/{menuID}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Get Menu by ID",
+        "description": "Get Menu by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "menuID",
+            "description": "ID of menu",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Menu",
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Update Menu by ID",
+        "description": "Update Menu by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "menuID",
+            "description": "ID of menu to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Menu object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated menu",
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Delete menu by ID",
+        "description": "Delete menu by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "menuID",
+            "description": "ID of menu to remove",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Removed menu",
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/ivr?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "IVR"
+        ],
+        "summary": "List all ivr",
+        "description": "List all ivr\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ID of account",
+            "schema": {
+              "$ref": "#/definitions/Child"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ivr",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Ivr"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/ivr/add-ivr?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "IVR"
+        ],
+        "summary": "Add new ivr",
+        "description": "Add new ivr\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Ivr object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Ivr"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ivr",
+            "schema": {
+              "$ref": "#/definitions/Ivr"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/ivr/{ivrID}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "IVR"
+        ],
+        "summary": "Get Ivr by ID",
+        "description": "Get ivr by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ivrID",
+            "description": "ID of ivr",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ivr",
+            "schema": {
+              "$ref": "#/definitions/Ivr"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "IVR"
+        ],
+        "summary": "Update ivr by ID",
+        "description": "Update ivr by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ivrID",
+            "description": "ID of ivr to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Ivr object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Ivr"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated ivr",
+            "schema": {
+              "$ref": "#/definitions/Ivr"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "IVR"
+        ],
+        "summary": "Delete ivr by ID",
+        "description": "Delete ivr by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ivrID",
+            "description": "ID of ivr to remove",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Removed ivr",
+            "schema": {
+              "$ref": "#/definitions/Ivr"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/mail-box?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "Mailbox"
+        ],
+        "summary": "Get all mail boxs",
+        "description": "Get all mailbBoxs\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of mailboxs"
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/featureCode/listAllFeatureCodes?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "FeatureCode"
+        ],
+        "summary": "List all featureCodes",
+        "description": "List all featureCodes\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "FeatureCode",
+            "schema": {
+              "$ref": "#/definitions/FeatureCode"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/featureCode/add-feature-code?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "FeatureCode"
+        ],
+        "summary": "Add new featureCode",
+        "description": "Add new featureCode\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "FeatureCode object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FeatureCode"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "FeatureCode",
+            "schema": {
+              "$ref": "#/definitions/FeatureCode"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/featureCode/deleteFeatureCodeById/{featureCodeID}?apikey={apiKey}": {
+      "delete": {
+        "tags": [
+          "FeatureCode"
+        ],
+        "summary": "Delete featureCode by ID",
+        "description": "Delete featureCode by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "featureCodeID",
+            "description": "ID of featureCode to remove",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Removed featureCode",
+            "schema": {
+              "$ref": "#/definitions/FeatureCode"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/featureCode/getFeatureCodeById/{featureCodeID}?apikey={apiKey}": {
+      "get": {
+        "tags": [
+          "FeatureCode"
+        ],
+        "summary": "Get featureCode by ID",
+        "description": "Get featureCode by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "featureCodeID",
+            "description": "ID of featureCode",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "FeatureCode",
+            "schema": {
+              "$ref": "#/definitions/FeatureCode"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/featureCode/updateFeatureCodeById/{featureCodeID}?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "FeatureCode"
+        ],
+        "summary": "Update featureCode",
+        "description": "Update featureCode by ID\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "featureCodeID",
+            "description": "ID of featureCode to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "FeatureCode object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ObjectFeatureCode"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated featureCode",
+            "schema": {
+              "$ref": "#/definitions/FeatureCode"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/ring-group?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "RingGroup"
+        ],
+        "summary": "List all ring-group",
+        "description": "List all ring-group\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "child",
+            "description": "Account ID",
+            "schema": {
+              "$ref": "#/definitions/Child"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of ring-group",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RingGroup"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/ring-group/add-ring-group?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "RingGroup"
+        ],
+        "summary": "Add new ring-group",
+        "description": "Add new ring-group\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "ringGroup",
+            "description": "Ring-group Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RingGroup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of ring-group",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RingGroup"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/ring-group/{ringGroupID}?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "RingGroup"
+        ],
+        "summary": "Update ring-group",
+        "description": "Update ring-group\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ringGroupID",
+            "description": "ID of ring-group to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "ringGroup",
+            "description": "Ring-group Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RingGroup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update ring-group",
+            "schema": {
+              "$ref": "#/definitions/RingGroup"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "RingGroup"
+        ],
+        "summary": "Get ring-group",
+        "description": "Get ring-group\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ringGroupID",
+            "description": "ID of ring-group to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ring-group",
+            "schema": {
+              "$ref": "#/definitions/RingGroup"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "RingGroup"
+        ],
+        "summary": "Delete ring-group",
+        "description": "Delete ring-group\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ringGroupID",
+            "description": "ID of ring-group to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted Ring-group",
+            "schema": {
+              "$ref": "#/definitions/RingGroup"
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/accounts/{filter}/provision-numbers/add-ring-group?apikey={apiKey}": {
+      "post": {
+        "tags": [
+          "RingGroup"
+        ],
+        "summary": "Add new ring-group",
+        "description": "Add new ring-group\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "filter",
+            "description": "AccountID or realm",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "apiKey",
+            "description": "Api_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "ringGroup",
+            "description": "Ring-group Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RingGroup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of ring-group",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RingGroup"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Device": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "account": {
+          "type": "string"
+        },
+        "sip_settings": {
+          "$ref": "#/definitions/SipSetting"
+        },
+        "follow_me": {
+          "$ref": "#/definitions/FollowMe"
+        },
+        "outgoing_call_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RuleID"
+          }
+        }
+      }
+    },
+    "SipSetting": {
+      "type": "object",
+      "properties": {
+        "internal": {
+          "type": "string"
+        },
+        "external": {
+          "type": "string"
+        },
+        "sip": {
+          "$ref": "#/definitions/Sip"
+        }
+      }
+    },
+    "Sip": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "FollowMe": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "ring_strategy": {
+          "type": "string"
+        },
+        "followme_numbers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "RuleID": {
+      "type": "object",
+      "properties": {
+        "rule_id": {
+          "type": "string"
+        }
+      }
+    },
+    "Number": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "rateCenter": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "account": {
+          "type": "string"
+        },
+        "use_caller_id": {
+          "type": "boolean"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "device": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "profilePicture": {
+          "type": "string"
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "Moh": {
+      "type": "object",
+      "properties": {
+        "mohname": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "audio": {
+          "type": "string"
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "Queue": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "extension": {
+          "type": "string"
+        },
+        "max_queue_size": {
+          "type": "string"
+        },
+        "welcome_message": {
+          "type": "string"
+        },
+        "moh": {
+          "type": "string"
+        },
+        "strategy": {
+          "type": "string"
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "AgentQueue": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "description": "ID of user",
+          "type": "string"
+        },
+        "queueId": {
+          "description": "ID of queue",
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "Ivr": {
+      "type": "object",
+      "properties": {
+        "module": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IvrModule"
+          }
+        },
+        "numbers": {
+          "description": "ID of number",
+          "type": "string"
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "IvrModule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "children": {
+          "$ref": "#/definitions/Children"
+        }
+      }
+    },
+    "Children": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "Menu": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MenuOption"
+          }
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "MenuOption": {
+      "type": "object",
+      "properties": {
+        "digit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "sound": {
+          "type": "string"
+        },
+        "module": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "FeatureCode": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "resource": {
+          "type": "string"
+        },
+        "feature": {
+          "type": "string"
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "ObjectFeatureCode": {
+      "type": "object",
+      "properties": {
+        "featureCode": {
+          "$ref": "#/definitions/FeatureCode"
+        }
+      }
+    },
+    "Child": {
+      "type": "object",
+      "properties": {
+        "child": {
+          "type": "string"
+        }
+      }
+    },
+    "Account": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "key": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Residential",
+            "Business",
+            "Business Enterprise"
+          ]
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "accountStatus": {
+          "type": "string",
+          "enum": [
+            "Active",
+            "Suspended",
+            "Terminated"
+          ]
+        }
+      }
+    },
+    "BillSettings": {
+      "type": "object",
+      "properties": {
+        "billingAddress": {
+          "type": "string"
+        },
+        "mailingAddress": {
+          "type": "string"
+        },
+        "LastInvoiceDate": {
+          "type": "string"
+        },
+        "eBilling": {
+          "type": "boolean"
+        },
+        "automaticPayments": {
+          "type": "boolean"
+        },
+        "creditCardNumber": {
+          "type": "string"
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "officePhone": {
+          "type": "string"
+        },
+        "mobilePhone": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "typeOfContact": {
+          "type": "string",
+          "enum": [
+            "User",
+            "Employee",
+            "TechnicalContact",
+            "AfterHours"
+          ]
+        },
+        "cLientPortalUsername": {
+          "type": "string"
+        },
+        "clientPortalPassword": {
+          "type": "string"
+        },
+        "sendBill": {
+          "type": "boolean"
+        },
+        "clientPortalAccessEnabled": {
+          "type": "boolean"
+        },
+        "paymentNotifications": {
+          "type": "boolean"
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "RingGroup": {
+      "type": "object",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "account": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "DeviceProvision": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "$ref": "#/definitions/Device"
+        },
+        "ivr": {
+          "$ref": "#/definitions/Ivr"
+        }
+      }
+    },
+    "Get": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "variable_name": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "string"
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "If": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "expression": {
+          "type": "string"
+        },
+        "execution_if_true": {
+          "$ref": "#/definitions/Children"
+        },
+        "execution_if_false": {
+          "$ref": "#/definitions/Children"
+        },
+        "account": {
+          "type": "string"
+        }
+      }
+    },
+    "AdminResource": {
+      "type": "object",
+      "properties": {
+        "caller": {
+          "type": "string"
+        },
+        "step": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
